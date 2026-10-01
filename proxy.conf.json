@@ -1,0 +1,13 @@
+{
+  "/api-paises": {
+    "target": "https://api.restcountries.com",
+    "secure": true,
+    "changeOrigin": true,
+    "headers": {
+      "Authorization": "Bearer rc_live_be8efd49982f4a71a13f3bd39a79ed58"
+    },
+    "pathRewrite": {
+      "^/api-paises": "/countries/v5"
+    }
+  }
+}

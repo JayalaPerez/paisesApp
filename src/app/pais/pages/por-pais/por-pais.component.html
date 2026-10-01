@@ -1,0 +1,25 @@
+<h2>Por país</h2>
+<hr>
+
+<div class="row">
+    <div class="col">
+        <app-pais-input 
+            (onEnter)="buscar($event)"
+        ></app-pais-input>
+        <p class="text-muted mt-2">Contenido para la página de países</p>
+    </div>
+</div>
+
+<hr>
+
+<!-- Alerta de error si no encuentra nada -->
+<div class="alert alert-danger" *ngIf="hayError">
+    No se encontró el país con el nombre {{ termino }}
+</div>
+
+<!-- Tabla: Se dibuja únicamente cuando no hay error Y hay países encontrados -->
+<div class="row" *ngIf="!hayError && paises.length > 0">
+    <div class="col">
+        <app-pais-tabla [paises]="paises"></app-pais-tabla>
+    </div>
+</div>
