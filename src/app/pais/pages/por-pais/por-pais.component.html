@@ -5,7 +5,9 @@
     <div class="col">
         <app-pais-input 
             (onEnter)="buscar($event)"
-        ></app-pais-input>
+            (onDebounce)="sugerencias($event)"
+            placeholder="Buscar país...">
+        </app-pais-input>
         <p class="text-muted mt-2">Contenido para la página de países</p>
     </div>
 </div>

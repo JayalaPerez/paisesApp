@@ -60,5 +60,12 @@ export class PorPaisComponent {
           console.error('Error en la petición:', err);
         }
       });
+          
+  }
+
+  sugerencias(termino: string) {
+    this.hayError = false;
+    // Aquí podrías implementar la lógica para mostrar sugerencias mientras el usuario escribe.
+    console.log('Sugerencias para:', termino);
   }
 }

@@ -1,1 +1,44 @@
-<p>ver-pais works!</p>
+<!-- Si existe pais, renderiza esta sección completa -->
+<div *ngIf="pais; else cargando" class="row mt-3">
+  <div class="col-12 col-md-6">
+    <h2>País: <small class="text-primary">{{ pais.names.common }}</small></h2>
+    
+    <ul class="list-group mt-3">
+
+      <h3>Información General</h3>  
+      <li class="list-group-item">
+        <strong>Nombre Oficial:</strong> {{ pais.names.official }}
+      </li>
+      <li class="list-group-item">
+        <strong>Capital:</strong> {{ pais.capitals[0]?.name || 'No registrada' }}
+      </li>
+      <li class="list-group-item">
+        <strong>Región:</strong> {{ pais.region }} ({{ pais.subregion }})
+      </li>
+      <li class="list-group-item">
+        <strong>Población:</strong> {{ pais.population | number }}
+      </li>
+      <li class="list-group-item" *ngIf="pais.currencies && pais.currencies.length > 0">
+        <strong>Moneda:</strong> {{ pais.currencies[0].name }} ({{ pais.currencies[0].symbol }})
+      </li>
+      <li class="list-group-item" *ngIf="pais.languages && pais.languages.length > 0">
+        <strong>Idioma:</strong> {{ pais.languages[0].name }}
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-12 col-md-6 text-center">
+    <h3>Bandera</h3>
+    <img [src]="pais.flag.url_png" 
+         [alt]="pais.names.common" 
+         class="img-fluid rounded border shadow-sm mt-2"
+         style="max-height: 250px;">
+  </div>
+</div>
+
+<!-- Plantilla alternativa: solo se dibuja mientras pais sea null o undefined -->
+<ng-template #cargando>
+  <div class="alert alert-info">
+    Espere por favor, cargando información del país...
+  </div>
+</ng-template>
